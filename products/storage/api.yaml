@@ -338,6 +338,31 @@ objects:
           - !ruby/object:Api::Type::String
             name: 'logObjectPrefix'
             description: 'A prefix for log object names.'
+      - !ruby/object:Api::Type::NestedObject
+        name: 'retentionPolicy'
+        description: |
+          The bucket's retention policy, which defines the minimum age an
+          object in the bucket must reach before it can be deleted or
+          overwritten.
+        properties:
+          - !ruby/object:Api::Type::Integer
+            name: 'retentionPeriod'
+            description: |
+              The period of time, in seconds, that objects in the bucket must
+              be retained and cannot be deleted, overwritten, or archived. The
+              value must be greater than 0 seconds and less than 3,155,760,000
+              seconds.
+          - !ruby/object:Api::Type::Time
+            name: 'effectiveTime'
+            description: |
+              The time from which the retentionPolicy was effective, in RFC
+              3339 format.
+          - !ruby/object:Api::Type::Boolean
+            name: 'isLocked'
+            description: |
+              Whether or not the retentionPolicy is locked. If true, the
+              retentionPolicy cannot be removed and the retention period
+              cannot be reduced.
       - !ruby/object:Api::Type::Integer
         name: 'metageneration'
         description: 'The metadata generation of this bucket.'
